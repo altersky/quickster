@@ -57,6 +57,10 @@ record_tags_width = 58
 record_combobox_width = 55
 #add_record_content_width = 44
 record_content_width = 44
+#help_window_width
+help_window_width=850
+#help_window_height
+help_window_height=270
 
 # telegram backup settings
 bot_token = 'your_bot_token'

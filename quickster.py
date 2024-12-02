@@ -78,6 +78,7 @@ def update_treeview(event=None):
         else:
             color = file_color
         tree.item(item, tags=(color,))  # Set background color
+
     tree.tag_configure(text_color, background=text_color)
     tree.tag_configure(link_color, background=link_color)
     tree.tag_configure(file_color, background=file_color)
@@ -418,7 +419,7 @@ def search_records(tags):
 def open_help():
     help_window = tk.Toplevel(root)
     help_window.title("Instruction")
-    center_window(help_window,650,250)
+    center_window(help_window,help_window_width,help_window_height)
     help_window.iconbitmap(icon)
 
     text_area = tk.Text(help_window, wrap=tk.WORD)
@@ -470,7 +471,7 @@ def hide_window(event=None):
     root.withdraw()
     return "break"  
 
-# Launcg icon in system tray in seperate thread
+# Launch icon in system tray in seperate thread
 def run_tray():
     create_tray_icon()
 
@@ -508,6 +509,10 @@ def backup_to_tlgrm():
         else:
             time.sleep(600)  # Wait 10 mins for next check
 
+# Function to check if files folder exists
+def ensure_files_directory():
+    if not os.path.exists('files'):
+        os.makedirs('files')
 
 # Initialize the database
 init_db()
@@ -552,6 +557,9 @@ root.bind('<Key>', handle_keypress)
 
 # Maximize program from tray
 keyboard.add_hotkey('ctrl+F1', show_window)
+
+# Check if files directory exists and if not, create it 
+ensure_files_directory()
 
 if do_tlgrm_backup:
     # Start check backup time thread
