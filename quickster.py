@@ -46,7 +46,7 @@ def init_db():
 def display_all_records():
     conn = sqlite3.connect(dbname)
     cursor = conn.cursor()
-    cursor.execute("SELECT id, tags, content, type FROM records")
+    cursor.execute("SELECT id, tags, type, content FROM records")
     records = cursor.fetchall()
     conn.close()
     return records
@@ -70,7 +70,7 @@ def update_treeview(event=None):
 
     # Set colors for existing elemnts
     for i, item in enumerate(tree.get_children()):
-        record_type = tree.item(item)['values'][3]  # Get content from record
+        record_type = tree.item(item)['values'][2]  # Get content from record
         if record_type == 'link':
             color = link_color
         elif record_type == 'text':
@@ -395,7 +395,7 @@ def search_records(tags):
             positive_tags.append(tag)
 
     # Form initial SQL query
-    sql_query = "SELECT * FROM records WHERE "
+    sql_query = "SELECT id,tags,type,content FROM records WHERE "
     
     # Add positive conditions
     if positive_tags:
@@ -531,12 +531,12 @@ entry_search.bind("<KeyRelease>", lambda event: update_treeview())
 entry_search.focus_set()
 
 # Create Treeview for record show
-tree = ttk.Treeview(root, columns=("id", "tags", "content", "type"), height=tree_height)
+tree = ttk.Treeview(root, columns=("id", "tags", "type", "content" ), height=tree_height)
 tree.column("#0", width=0, stretch=tk.NO)  # Hide first column
 tree.column("id", width=0, stretch=tk.NO)   
 tree.column("tags", width=tags_width)
-tree.column("content", width=content_width)
 tree.column("type", width=0, stretch=tk.NO)  # Hide type column
+tree.column("content", width=content_width)
 tree.pack(pady=10)
 
 # Set window initial size and center it
