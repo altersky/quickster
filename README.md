@@ -12,7 +12,7 @@ You can access all needed information quickly. First save info then find it with
 Alternatively, copy the file content to the clipboard (the file must be located in .\\files\\filename, and the filename must be specified in the entry content))  
 
 *__<Shift+Delete>__* - Delete entry  
-*__<ESC>__* - Minimize program to tray
+*__ESC__* - Minimize program to tray
 
 Tags can be added by separating them with the # symbol for searching as well.  
 You can print #- to exclude entry with this tag  
