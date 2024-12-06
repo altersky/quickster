@@ -1,3 +1,5 @@
 # quickster
 Tool for quick access to necessary information
-<video src='https://vkvideo.ru/video7337798_456239089' width=720/>
+
+https://github.com/user-attachments/assets/e3d5b0d8-64fc-4943-9405-0a6dfc197d82
+
